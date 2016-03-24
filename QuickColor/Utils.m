@@ -63,8 +63,8 @@
 
 + (float) getItemSizeOfLevel: (int) level withWidth: (float) width withHeight: (float) height {
     int minLevel = [Utils getSizeOfLevel:level];
-    if (minLevel > 14) {
-        minLevel = 14;
+    if (minLevel > 15) {
+        minLevel = 15;
     }
     float min = (float)(height - MARGIN_ITEM*3 - BEGIN_TOP*3)/minLevel;
     float max = (float)(width - MARGIN_ITEM*3 - BEGIN_TOP*3)/[Utils getSizeOfLevel:level];
@@ -161,13 +161,13 @@
     } else if (level < 20) {
         result = 0.8;
     } else if (level < 30) {
-        result = 0.9;
+        result = 0.85;
     } else if (level < 40) {
-        result = 0.92;
+        result = 0.9;
     } else if (level < 50) {
-        result = 0.95;
+        result = 0.93;
     } else {
-        result = 0.97;
+        result = 0.95;
     }
     return result;
 }

@@ -23,6 +23,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"background2.jpg"]];
     level = 0;
     [self initSlider];
     [self updateLayout];
@@ -79,8 +80,7 @@
         if (row > 15) {
             row = 15;
         }
-        int randomIndex = [self randomNumberBetween:0 maxNumber:column*row];
-        printf("randomIndex = %d", randomIndex);
+        int randomIndex = [self randomNumberBetween:0 maxNumber:(column-1)*(row-1) - 1];
         NSArray* arrayColor = [self randomColor:[Utils getAlphaOfLevel:level]];
         UIColor* firstColor = [arrayColor objectAtIndex:0];
         UIColor* secondColor = [arrayColor objectAtIndex:1];
@@ -94,7 +94,6 @@
                 int index = j + i*column;
                 item.tag = index;
                 if (index == randomIndex) {
-                    printf("randomIndex set color");
                     [item setColor:secondColor];
                     item.isTrue = true;
                 } else {
@@ -114,7 +113,7 @@
         if (row > 15) {
             row = 15;
         }
-        int randomIndex = [self randomNumberBetween:0 maxNumber:column*row];
+        int randomIndex = [self randomNumberBetween:0 maxNumber:(column-1)*(row-1) - 1];
         NSArray* arrayColor = [self randomColor:[Utils getAlphaOfLevel:level]];
         UIColor* firstColor = [arrayColor objectAtIndex:0];
         UIColor* secondColor = [arrayColor objectAtIndex:1];
@@ -125,9 +124,12 @@
                 ItemView* item = (ItemView*) subView;
                 if (item.tag == randomIndex) {
                     [item setColor:secondColor];
+                    item.layer.borderColor = [UIColor redColor].CGColor;
+                    item.layer.borderWidth = 2;
                     item.isTrue = true;
                 } else {
                     [item setColor:firstColor];
+                    item.layer.borderWidth = 0;
                     item.isTrue = false;
                 }
             }

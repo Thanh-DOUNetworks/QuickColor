@@ -26,6 +26,7 @@
 //    FBSDKLoginButton *loginButton = [[FBSDKLoginButton alloc] init];
 //    loginButton.center = self.view.center;
 //    [self.view addSubview:loginButton];
+    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"background_new.jpeg"]];
         
     UIButton* bt_learn = [[UIButton alloc] initWithFrame:CGRectMake(SCREEN_WIDTH/2 - BUTTON_SIZE - 10, SCREEN_HEIGH/2 - BUTTON_SIZE/2, BUTTON_SIZE, BUTTON_SIZE)];
     [bt_learn setBackgroundImage:[UIImage imageNamed:@"icon_learn"] forState:UIControlStateNormal];
@@ -36,6 +37,8 @@
     [bt_play setBackgroundImage:[UIImage imageNamed:@"icon_play"] forState:UIControlStateNormal];
     [bt_play addTarget:self action:@selector(gotoGamePage) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:bt_play];
+    
+    
 }
 
 - (void) gotoLearnPage {
